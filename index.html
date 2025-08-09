@@ -29,8 +29,8 @@
    }
    /* Banner height */
    .banner-height {
-     height: 240px !important;
-     max-height: 240px;
+     height: 200px !important;
+     max-height: 200px;
    }
    /* Horizontal scroll for products */
    #products {
@@ -41,8 +41,8 @@
      scrollbar-color: #9ca3af #e5e7eb;
      padding-left: 4px;
      padding-right: 4px;
-     margin-top: 0 !important;
-     margin-bottom: 0 !important;
+     margin-top: 4px !important;
+     margin-bottom: 4px !important;
    }
    #products::-webkit-scrollbar {
      height: 8px;
@@ -67,44 +67,44 @@
    }
    /* Custom minimal vertical spacing */
    header {
-     padding-top: 4px !important;
-     padding-bottom: 4px !important;
-     margin-bottom: 2px !important;
+     padding-top: 8px !important;
+     padding-bottom: 8px !important;
+     margin-bottom: 6px !important;
    }
    nav {
-     padding-top: 2px !important;
-     padding-bottom: 2px !important;
-     margin-top: 0 !important;
-     margin-bottom: 2px !important;
+     padding-top: 6px !important;
+     padding-bottom: 6px !important;
+     margin-top: 4px !important;
+     margin-bottom: 6px !important;
    }
    section.banner-section {
-     margin-top: 0 !important;
-     margin-bottom: 2px !important;
+     margin-top: 4px !important;
+     margin-bottom: 6px !important;
      padding-left: 4px !important;
      padding-right: 4px !important;
    }
    section.choose-shirt {
-     margin-top: 2px !important;
-     margin-bottom: 2px !important;
+     margin-top: 6px !important;
+     margin-bottom: 6px !important;
      padding-left: 4px !important;
      padding-right: 4px !important;
    }
    #products {
-     margin-top: 2px !important;
-     margin-bottom: 2px !important;
+     margin-top: 6px !important;
+     margin-bottom: 6px !important;
    }
    article {
-     margin-left: 2px !important;
-     margin-right: 2px !important;
-     padding-top: 2px !important;
-     padding-bottom: 2px !important;
+     margin-left: 4px !important;
+     margin-right: 4px !important;
+     padding-top: 4px !important;
+     padding-bottom: 4px !important;
      display: inline-block;
      vertical-align: top;
    }
    footer#footer-cart {
-     padding-top: 4px !important;
-     padding-bottom: 4px !important;
-     margin-top: 2px !important;
+     padding-top: 8px !important;
+     padding-bottom: 8px !important;
+     margin-top: 6px !important;
      position: fixed;
      bottom: 0;
      left: 0;
@@ -118,14 +118,14 @@
    }
    /* Reduce vertical spacing inside articles */
    article h3 {
-     margin-bottom: 0.125rem;
-   }
-   article p {
-     margin-top: 0.125rem;
      margin-bottom: 0.25rem;
    }
-   article button {
+   article p {
      margin-top: 0.25rem;
+     margin-bottom: 0.5rem;
+   }
+   article button {
+     margin-top: 0.5rem;
    }
    /* Sidebar cart fixed and above footer */
    #cart-sidebar {
@@ -220,13 +220,82 @@
      -ms-overflow-style: none;
      scrollbar-width: none;
    }
+   /* Pedidos section styles */
+   #orders-section {
+     max-width: 5xl;
+     margin: 0 auto 2rem auto;
+     padding: 0 1rem;
+   }
+   #orders-list {
+     margin-top: 1rem;
+     max-height: 300px;
+     overflow-y: auto;
+     border: 1px solid #cbd5e1;
+     border-radius: 0.75rem;
+     padding: 1rem;
+     background: #f9fafb;
+   }
+   .order-item {
+     border-bottom: 1px solid #e2e8f0;
+     padding-bottom: 0.75rem;
+     margin-bottom: 0.75rem;
+   }
+   .order-item:last-child {
+     border-bottom: none;
+     margin-bottom: 0;
+     padding-bottom: 0;
+   }
+   .order-header {
+     font-weight: 700;
+     font-size: 1rem;
+     margin-bottom: 0.25rem;
+     color: #1e293b;
+   }
+   .order-date {
+     font-size: 0.75rem;
+     color: #64748b;
+     margin-bottom: 0.5rem;
+   }
+   .order-products {
+     font-size: 0.875rem;
+     color: #334155;
+     margin-bottom: 0.5rem;
+   }
+   .order-total {
+     font-weight: 700;
+     color: #0f172a;
+   }
+   /* Splash animation styles */
+   #add-to-cart-splash {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%) scale(0);
+     background-color: rgba(0, 71, 179, 0.9);
+     color: white;
+     font-weight: 700;
+     font-size: 1.5rem;
+     padding: 1rem 2rem;
+     border-radius: 1.5rem;
+     z-index: 1000;
+     pointer-events: none;
+     opacity: 0;
+     transition: opacity 0.3s ease, transform 0.3s ease;
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+   }
+   #add-to-cart-splash.show {
+     opacity: 1;
+     transform: translate(-50%, -50%) scale(1);
+   }
   </style>
  </head>
  <body class="bg-white text-black min-h-screen flex flex-col justify-start relative overflow-x-hidden pb-16">
   <!-- Header -->
   <header class="bg-[#0047B3] flex items-center justify-between px-6 rounded-br-[2.5rem]">
-   <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0">
-    <img src="logo.png" class="w-14 h-14 object-contain" draggable="false" height="56" src="logo.png" width="56"/>
+   <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden">
+    <img src="logo.png" class="w-14 h-14 object-contain rounded-full" draggable="false" height="56" width="56" alt="Logo circular branco com texto Fúria das Ruas estilizado"/>
    </div>
    <h1 class="text-white font-extrabold text-xl md:text-2xl select-none">
     FÚRIA DAS RUAS
@@ -240,80 +309,88 @@
   </header>
   <!-- Navigation -->
   <nav class="flex gap-1 px-6 overflow-x-auto scrollbar-hide">
-   <a class="flex items-center gap-1 bg-gradient-to-r from-gray-800 to-gray-600 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
+   <a id="nav-pedidos" class="flex items-center gap-1 bg-gray-900 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer" href="javascript:void(0)">
     <i class="fas fa-box-open text-base"></i>
     Pedidos
    </a>
-   <a class="flex items-center gap-1 bg-gradient-to-r from-gray-800 to-gray-600 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
+   <a id="nav-shopping" class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer">
     <i class="fas fa-shopping-bag text-base"></i>
     Shopping
    </a>
-   <a class="flex items-center gap-1 bg-gradient-to-r from-gray-800 to-gray-600 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
+   <a class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
     <i class="fab fa-whatsapp text-base"></i>
     Grupo
    </a>
-   <a class="flex items-center gap-1 bg-gradient-to-r from-gray-800 to-gray-600 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
+   <a class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
     <i class="fas fa-bullhorn text-base"></i>
     Notícias Fúria CG
    </a>
   </nav>
   <!-- Banner -->
-  <section class="banner-section px-6">
-   <img alt="Banner promocional com arte urbana e texto Fúria das Ruas em estilo grafite" class="w-full max-w-4xl mx-auto rounded-3xl object-cover banner-height" draggable="false" height="240" src="banner.jpg" width="1280" style="height: 240px; max-height: 240px;"/>
+  <section id="shopping-section" class="banner-section px-6">
+   <img alt="Banner promocional com arte urbana e texto Fúria das Ruas em estilo grafite" class="w-full max-w-4xl mx-auto rounded-3xl object-cover banner-height" draggable="false" height="200" src="banner.jpg" width="1280" style="height: 200px; max-height: 200px;"/>
+   <!-- Choose your shirt text -->
+   <section class="choose-shirt px-6 text-center mt-6 mb-6">
+    <h2 class="font-extrabold text-base select-none">
+     Escolha sua Camiseta
+    </h2>
+   </section>
+   <!-- Products -->
+   <section id="products" class="max-w-5xl mx-auto overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 px-4">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
+     <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="adulto.jpg" width="110"/>
+     <h3 class="font-extrabold text-center select-none text-sm">
+      Fúria Adulto
+     </h3>
+     <p class="text-center text-xs select-none mt-0.5">
+      Escolha o Tamanho
+     </p>
+     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Adulto" data-price="60" data-img="adulto.jpg" type="button" data-requires-size="adulto">
+      R$60
+      <span class="font-normal">
+       Adicionar
+      </span>
+     </button>
+    </article>
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
+     <img alt="Camiseta Fúria + Hubz, camiseta branca com estampa combinada de logos" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="hubz.jpg" width="110"/>
+     <h3 class="font-extrabold text-center select-none text-sm">
+      Fúria + Hubz
+     </h3>
+     <p class="text-center text-xs select-none mt-0.5">
+      T. Único G
+     </p>
+     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria + Hubz" data-price="40" data-img="hubz.jpg" type="button">
+      R$40
+      <span class="font-normal">
+       Adicionar
+      </span>
+     </button>
+    </article>
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
+     <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="infantil.png" width="110"/>
+     <h3 class="font-extrabold text-center select-none text-sm">
+      Fúria Infantil
+     </h3>
+     <p class="text-center text-xs select-none mt-0.5">
+      Escolha o Tamanho
+     </p>
+     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Infantil" data-price="50" data-img="infantil.png" type="button" data-requires-size="infantil">
+      R$50
+      <span class="font-normal">
+       Adicionar
+      </span>
+     </button>
+    </article>
+   </section>
   </section>
-  <!-- Choose your shirt text -->
-  <section class="choose-shirt px-6 text-center">
-   <h2 class="font-extrabold text-base select-none">
-    Escolha sua Camiseta
-   </h2>
-  </section>
-  <!-- Products -->
-  <section id="products" class="max-w-5xl mx-auto overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 px-4">
-   <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-    <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="adulto.jpg" width="110"/>
-    <h3 class="font-extrabold text-center select-none text-sm">
-     Fúria Adulto
-    </h3>
-    <p class="text-center text-xs select-none mt-0.5">
-     Escolha o Tamanho
-    </p>
-    <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Adulto" data-price="60" data-img="adulto.jpg" type="button" data-requires-size="adulto">
-     R$60
-     <span class="font-normal">
-      Adicionar
-     </span>
-    </button>
-   </article>
-   <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-    <img alt="Camiseta Fúria + Hubz, camiseta branca com estampa combinada de logos" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="hubz.jpg" width="110"/>
-    <h3 class="font-extrabold text-center select-none text-sm">
-     Fúria + Hubz
-    </h3>
-    <p class="text-center text-xs select-none mt-0.5">
-     T. Único G
-    </p>
-    <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria + Hubz" data-price="40" data-img="hubz.jpg" type="button">
-     R$40
-     <span class="font-normal">
-      Adicionar
-     </span>
-    </button>
-   </article>
-   <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-    <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="infantil.png" width="110"/>
-    <h3 class="font-extrabold text-center select-none text-sm">
-     Fúria Infantil
-    </h3>
-    <p class="text-center text-xs select-none mt-0.5">
-     Escolha o Tamanho
-    </p>
-    <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Infantil" data-price="50" data-img="infantil.png" type="button" data-requires-size="infantil">
-     R$50
-     <span class="font-normal">
-      Adicionar
-     </span>
-    </button>
-   </article>
+
+  <!-- Orders section -->
+  <section id="orders-section" class="hidden">
+   <h2 class="font-extrabold text-xl text-center mt-6 mb-4 select-none">Pedidos Realizados</h2>
+   <div id="orders-list" aria-live="polite" aria-relevant="additions removals">
+    <p class="text-center text-gray-500 select-none">Nenhum pedido realizado ainda.</p>
+   </div>
   </section>
 
   <!-- Size selection modal -->
@@ -392,6 +469,11 @@
 
   <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
 
+  <!-- Add to Cart Splash -->
+  <div id="add-to-cart-splash" role="alert" aria-live="assertive" aria-atomic="true">
+    <i class="fas fa-check-circle"></i> Item adicionado ao carrinho!
+  </div>
+
   <script>
    (() => {
     const adultSizes = [
@@ -449,6 +531,9 @@
         if (count > 0) {
           cartItemsCountEl.textContent = count + (count === 1 ? ' item' : ' items');
           cartTotalPriceEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        } else {
+          cartItemsCountEl.textContent = '0 item';
+          cartTotalPriceEl.textContent = 'R$ 0,00';
         }
 
         const container = document.getElementById('cart-items-container');
@@ -487,8 +572,66 @@
     const clientPhoneInput = document.getElementById('client-phone');
     const checkoutCancelBtn = document.getElementById('checkout-cancel');
 
+    const navPedidos = document.getElementById('nav-pedidos');
+    const navShopping = document.getElementById('nav-shopping');
+    const ordersSection = document.getElementById('orders-section');
+    const shoppingSection = document.getElementById('shopping-section');
+    const ordersList = document.getElementById('orders-list');
+
     let selectedSize = null;
     let pendingAdd = null; // {name, price, img, type}
+
+    // Utility: Save orders to cookie (JSON string)
+    function saveOrdersToCookie(orders) {
+      const json = JSON.stringify(orders);
+      const expires = new Date();
+      expires.setFullYear(expires.getFullYear() + 1);
+      document.cookie = `furia_orders=${encodeURIComponent(json)}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    }
+
+    // Utility: Load orders from cookie
+    function loadOrdersFromCookie() {
+      const cookies = document.cookie.split(';').map(c => c.trim());
+      for (const c of cookies) {
+        if (c.startsWith('furia_orders=')) {
+          try {
+            return JSON.parse(decodeURIComponent(c.substring('furia_orders='.length)));
+          } catch {
+            return [];
+          }
+        }
+      }
+      return [];
+    }
+
+    // Render orders list in the Pedidos section
+    function renderOrders() {
+      const orders = loadOrdersFromCookie();
+      ordersList.innerHTML = '';
+      if (orders.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-center text-gray-500 select-none';
+        p.textContent = 'Nenhum pedido realizado ainda.';
+        ordersList.appendChild(p);
+        return;
+      }
+      orders.forEach(order => {
+        const div = document.createElement('div');
+        div.className = 'order-item';
+        const date = new Date(order.date);
+        const dateStr = date.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+        const productsHtml = order.items.map((item, i) => {
+          return `${i+1}. ${item.name}${item.size ? ' - Tamanho: ' + item.size : ''} - R$ ${item.price.toFixed(2).replace('.', ',')}`;
+        }).join('<br>');
+        div.innerHTML = `
+          <div class="order-header">Pedido de ${order.clientName}</div>
+          <div class="order-date">${dateStr}</div>
+          <div class="order-products">${productsHtml}</div>
+          <div class="order-total">Total: R$ ${order.total.toFixed(2).replace('.', ',')}</div>
+        `;
+        ordersList.appendChild(div);
+      });
+    }
 
     function openSizeModal(type, name) {
       selectedSize = null;
@@ -534,6 +677,7 @@
     sizeConfirmBtn.addEventListener('click', () => {
       if (!selectedSize || !pendingAdd) return;
       cart.addItem(pendingAdd.name, pendingAdd.price, pendingAdd.img, selectedSize);
+      showAddToCartSplash();
       sizeModal.classList.add('hidden');
       pendingAdd = null;
     });
@@ -551,6 +695,7 @@
           openSizeModal(requiresSize, name);
         } else {
           cart.addItem(name, price, img);
+          showAddToCartSplash();
         }
       });
     });
@@ -559,6 +704,11 @@
     document.getElementById('clear-cart').addEventListener('click', () => {
       cart.clear();
       closeCartSidebar();
+      // Clear footer cart preview items and total
+      const cartItemsCountEl = document.getElementById('cart-items-count');
+      const cartTotalPriceEl = document.getElementById('cart-total-price');
+      cartItemsCountEl.textContent = '0 item';
+      cartTotalPriceEl.textContent = 'R$ 0,00';
     });
 
     // View cart button opens sidebar
@@ -612,8 +762,25 @@
       message += `*Total:* R$ ${cart.getTotal().toFixed(2).replace('.', ',')}`;
       const phoneNumber = '5567999321890';
       const url = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      // Save order to cookie
+      const orders = loadOrdersFromCookie();
+      const newOrder = {
+        clientName: name,
+        clientPhone: phone,
+        items: cart.items.map(i => ({ name: i.name, price: i.price, size: i.size || null })),
+        total: cart.getTotal(),
+        date: new Date().toISOString()
+      };
+      orders.unshift(newOrder); // newest first
+      saveOrdersToCookie(orders);
+      renderOrders();
+
       window.open(url, '_blank');
       checkoutModal.classList.add('hidden');
+      cart.clear();
+      closeCartSidebar();
+      showSection('shopping');
     });
 
     function openCartSidebar() {
@@ -628,6 +795,52 @@
       document.getElementById('footer-cart').style.zIndex = '40';
       document.getElementById('footer-cart').style.pointerEvents = 'auto';
     }
+
+    // Navigation between Pedidos and Shopping sections
+    function showSection(section) {
+      if (section === 'pedidos') {
+        ordersSection.classList.remove('hidden');
+        shoppingSection.classList.add('hidden');
+        navPedidos.classList.add('bg-gray-900');
+        navPedidos.classList.remove('bg-gray-800');
+        navShopping.classList.remove('bg-gray-900');
+        navShopping.classList.add('bg-gray-800');
+      } else {
+        shoppingSection.classList.remove('hidden');
+        ordersSection.classList.add('hidden');
+        navShopping.classList.add('bg-gray-900');
+        navShopping.classList.remove('bg-gray-800');
+        navPedidos.classList.remove('bg-gray-900');
+        navPedidos.classList.add('bg-gray-800');
+      }
+    }
+
+    navPedidos.addEventListener('click', () => {
+      renderOrders();
+      showSection('pedidos');
+    });
+    navShopping.addEventListener('click', () => {
+      showSection('shopping');
+    });
+
+    // Splash animation for add to cart
+    const splash = document.getElementById('add-to-cart-splash');
+    let splashTimeout = null;
+    function showAddToCartSplash() {
+      if (splashTimeout) {
+        clearTimeout(splashTimeout);
+      }
+      splash.classList.add('show');
+      splashTimeout = setTimeout(() => {
+        splash.classList.remove('show');
+      }, 500);
+    }
+
+    // On load, show shopping section and render orders
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('shopping');
+      renderOrders();
+    });
    })();
   </script>
  </body>
