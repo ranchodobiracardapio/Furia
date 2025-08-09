@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
    body {
      font-family: "Inter", sans-serif;
@@ -29,8 +29,8 @@
    }
    /* Banner height */
    .banner-height {
-     height: 200px !important;
-     max-height: 200px;
+     height: 160px !important;
+     max-height: 160px;
    }
    /* Horizontal scroll for products */
    #products {
@@ -70,36 +70,178 @@
      padding-top: 8px !important;
      padding-bottom: 8px !important;
      margin-bottom: 6px !important;
+     border-bottom-left-radius: 2.5rem;
+     border-bottom-right-radius: 2.5rem;
+     background-color: #000000;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding-left: 1.5rem;
+     padding-right: 1.5rem;
+     position: relative;
+     z-index: 60;
+   }
+   /* Logo container */
+   header > div:first-child {
+     flex-shrink: 0;
+   }
+   /* Title container with frame */
+   .title-frame {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     flex-grow: 1;
+     margin: 0 1rem;
+     user-select: none;
+   }
+   .title-frame img {
+     width: 100%;
+     max-width: 180px;
+     height: auto;
+     object-fit: contain;
+     margin-bottom: 0.25rem;
+     pointer-events: none;
+     user-select: none;
+   }
+   /* Title with graffiti style font */
+   h1 {
+     font-family: 'Fredericka the Great', cursive;
+     font-size: 2rem;
+     color: white;
+     text-shadow:
+       2px 2px 0 #111,
+       4px 4px 0 #000000,
+       6px 6px 5px rgba(0,0,0,0.7);
+     user-select: none;
+     letter-spacing: 0.05em;
+     line-height: 1;
+     white-space: nowrap;
+     text-transform: uppercase;
    }
    nav {
      padding-top: 6px !important;
      padding-bottom: 6px !important;
      margin-top: 4px !important;
      margin-bottom: 6px !important;
+     background-color: #0047B3;
+     border-radius: 9999px;
+     max-width: fit-content;
+     margin-left: auto;
+     margin-right: auto;
+     transition: all 0.3s ease;
+     position: relative;
+     z-index: 60;
+   }
+   nav.fixed-top {
+     position: fixed !important;
+     top: 0;
+     left: 0;
+     right: 0;
+     margin: 0 auto;
+     max-width: 100%;
+     border-radius: 0;
+     padding-left: 1rem !important;
+     padding-right: 1rem !important;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+     background-color: #0047B3;
+     z-index: 1000;
    }
    section.banner-section {
-     margin-top: 4px !important;
-     margin-bottom: 6px !important;
+     margin-top: 2px !important;
+     margin-bottom: 2px !important;
      padding-left: 4px !important;
      padding-right: 4px !important;
+     position: relative;
+     max-width: 1280px;
+     margin-left: auto;
+     margin-right: auto;
    }
    section.choose-shirt {
      margin-top: 6px !important;
-     margin-bottom: 6px !important;
+     margin-bottom: 2px !important;
      padding-left: 4px !important;
      padding-right: 4px !important;
    }
    #products {
      margin-top: 6px !important;
      margin-bottom: 6px !important;
+     display: flex;
+     gap: 0.75rem;
+     overflow-x: auto;
+     padding-left: 4px;
+     padding-right: 4px;
+     scrollbar-width: thin;
+     scrollbar-color: #9ca3af #e5e7eb;
+   }
+   #products::-webkit-scrollbar {
+     height: 8px;
+   }
+   #products::-webkit-scrollbar-track {
+     background: #e5e7eb;
+   }
+   #products::-webkit-scrollbar-thumb {
+     background-color: #9ca3af;
+     border-radius: 4px;
    }
    article {
-     margin-left: 4px !important;
-     margin-right: 4px !important;
-     padding-top: 4px !important;
-     padding-bottom: 4px !important;
-     display: inline-block;
-     vertical-align: top;
+     flex: 0 0 auto;
+     width: 120px;
+     padding: 0.75rem;
+     background: linear-gradient(to bottom, #d1d5db, #ffffff);
+     border-radius: 1.5rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     margin: 0;
+   }
+   article img {
+     height: 90px;
+     width: 90px;
+     margin-bottom: 0.25rem;
+     object-fit: contain;
+     transform: none !important;
+     border-radius: 0.5rem;
+   }
+   article h3 {
+     font-size: 0.875rem;
+     margin-bottom: 0.125rem;
+     line-height: 1.1;
+     font-weight: 800;
+     color: #1e293b;
+     user-select: none;
+   }
+   article p {
+     font-size: 0.7rem;
+     margin-bottom: 0.25rem;
+     line-height: 1.1;
+     color: #475569;
+     user-select: none;
+   }
+   article button {
+     font-size: 0.7rem;
+     padding: 0.25rem 0.5rem;
+     margin-top: auto;
+     border-radius: 9999px;
+     font-weight: 700;
+     user-select: none;
+     background-image: linear-gradient(to right, #14b8a6, #22c55e);
+     color: white;
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     min-width: 80px;
+   }
+   article button:hover {
+     background-color: #16a34a;
+   }
+   article button span {
+     font-weight: 400;
+     margin-left: 0.25rem;
    }
    footer#footer-cart {
      padding-top: 8px !important;
@@ -115,17 +257,6 @@
      align-items: center;
      justify-content: space-between;
      pointer-events: auto;
-   }
-   /* Reduce vertical spacing inside articles */
-   article h3 {
-     margin-bottom: 0.25rem;
-   }
-   article p {
-     margin-top: 0.25rem;
-     margin-bottom: 0.5rem;
-   }
-   article button {
-     margin-top: 0.5rem;
    }
    /* Sidebar cart fixed and above footer */
    #cart-sidebar {
@@ -289,154 +420,361 @@
      opacity: 1;
      transform: translate(-50%, -50%) scale(1);
    }
+   /* Special items horizontal scroll container */
+   .special-items-section {
+     max-width: 5xl;
+     margin: 0.25rem auto 3rem auto;
+     padding: 0 1rem;
+   }
+   .special-items-section h2 {
+     font-size: 1rem;
+     margin-bottom: 0.5rem;
+     user-select: none;
+   }
+   .special-items-container {
+     display: flex;
+     gap: 0.75rem;
+     overflow-x: auto;
+     padding-bottom: 0.5rem;
+     scrollbar-width: thin;
+     scrollbar-color: #9ca3af #e5e7eb;
+   }
+   .special-items-container::-webkit-scrollbar {
+     height: 8px;
+   }
+   .special-items-container::-webkit-scrollbar-track {
+     background: #e5e7eb;
+   }
+   .special-items-container::-webkit-scrollbar-thumb {
+     background-color: #9ca3af;
+     border-radius: 4px;
+   }
+   /* Special item card compact and slightly shorter width */
+   .special-item-card {
+     background: #f3f4f6;
+     border-radius: 1rem;
+     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+     width: 180px;
+     min-width: 180px;
+     padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     cursor: pointer;
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+     user-select: none;
+   }
+   .special-item-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+   }
+   .special-item-image {
+     width: 70px;
+     height: 70px;
+     object-fit: contain;
+     border-radius: 0.5rem;
+     margin-right: 0.75rem;
+     user-select: none;
+     flex-shrink: 0;
+   }
+   .special-item-content {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+   }
+   .special-item-title {
+     font-weight: 700;
+     font-size: 0.9rem;
+     color: #1e293b;
+     margin-bottom: 0.4rem;
+     user-select: none;
+   }
+   .special-item-button {
+     background: linear-gradient(to right, #14b8a6, #22c55e);
+     color: white;
+     font-weight: 700;
+     font-size: 0.8rem;
+     border-radius: 9999px;
+     padding: 0.4rem 1rem;
+     user-select: none;
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
+     align-self: flex-start;
+     width: auto;
+     max-width: 120px;
+   }
+   .special-item-button:hover {
+     background-color: #16a34a;
+   }
+   /* Banner image container for rotation */
+   .banner-image-container {
+     position: relative;
+     width: 100%;
+     max-width: 1280px;
+     height: 160px;
+     max-height: 160px;
+     margin-left: auto;
+     margin-right: auto;
+     border-radius: 1.5rem;
+     overflow: hidden;
+   }
+   .banner-image-container img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 160px;
+     max-height: 160px;
+     object-fit: cover;
+     border-radius: 1.5rem;
+     opacity: 0;
+     transition: opacity 0.8s ease;
+     user-select: none;
+     pointer-events: none;
+   }
+   .banner-image-container img.active {
+     opacity: 1;
+     position: relative;
+     pointer-events: auto;
+   }
+   /* Responsive banner height and width */
+   @media (max-width: 640px) {
+     .banner-image-container {
+       height: 120px;
+       max-height: 120px;
+       border-radius: 1rem;
+     }
+     .banner-image-container img {
+       height: 120px;
+       max-height: 120px;
+       border-radius: 1rem;
+     }
+   }
+   @media (max-width: 400px) {
+     .banner-image-container {
+       height: 100px;
+       max-height: 100px;
+       border-radius: 0.75rem;
+     }
+     .banner-image-container img {
+       height: 100px;
+       max-height: 100px;
+       border-radius: 0.75rem;
+     }
+   }
   </style>
  </head>
  <body class="bg-white text-black min-h-screen flex flex-col justify-start relative overflow-x-hidden pb-16">
   <!-- Header -->
-  <header class="bg-[#0047B3] flex items-center justify-between px-6 rounded-br-[2.5rem]">
+  <header>
    <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden">
-    <img src="logo.jpg" class="w-14 h-14 object-contain rounded-full" draggable="false" height="56" width="56" alt="Logo circular branco com texto Fúria das Ruas estilizado"/>
+    <img alt="Logo circular branco com texto Fúria das Ruas estilizado" class="w-14 h-14 object-contain rounded-full" draggable="false" height="56" src="logo.jpg" width="56"/>
    </div>
-   <h1 class="text-white font-extrabold text-xl md:text-2xl select-none">
-    FÚRIA DAS RUAS
-   </h1>
+   <div class="title-frame" aria-label="Moldura com imagem do título Fúria das Ruas">
+    <img alt="Imagem decorativa do título Fúria das Ruas estilizado em grafite, moldura decorativa" draggable="false" height="60" src="título.png" width="180"/>
+   </div>
    <button aria-label="Abrir carrinho de compras" class="relative shrink-0 focus:outline-none" id="cart-button" type="button">
-    <i class="fas fa-shopping-cart text-green-600 text-3xl"></i>
+    <i class="fas fa-cart-plus text-green-600 text-3xl">
+    </i>
     <span class="absolute -top-1 -right-1 bg-white text-black text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center select-none hidden" id="cart-count">
      0
     </span>
    </button>
   </header>
   <!-- Navigation -->
-  <nav class="flex gap-1 px-6 overflow-x-auto scrollbar-hide">
-   <a id="nav-pedidos" class="flex items-center gap-1 bg-gray-900 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer" href="javascript:void(0)">
-    <i class="fas fa-box-open text-base"></i>
+  <nav class="flex gap-1 px-6 overflow-x-auto scrollbar-hide" id="main-nav">
+   <a class="flex items-center gap-1 bg-gray-900 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer" href="javascript:void(0)" id="nav-pedidos">
+    <i class="fas fa-box-open text-base">
+    </i>
     Pedidos
    </a>
-   <a id="nav-shopping" class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer">
-    <i class="fas fa-shopping-bag text-base"></i>
+   <a class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0 cursor-pointer" id="nav-shopping">
+    <i class="fas fa-shopping-bag text-base">
+    </i>
     Shopping
    </a>
    <a class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
-    <i class="fab fa-whatsapp text-base"></i>
+    <i class="fab fa-whatsapp text-base">
+    </i>
     Grupo
    </a>
    <a class="flex items-center gap-1 bg-gray-800 text-white font-bold rounded-full px-4 py-1 whitespace-nowrap shrink-0" href="#">
-    <i class="fas fa-bullhorn text-base"></i>
+    <i class="fas fa-bullhorn text-base">
+    </i>
     Notícias Fúria CG
    </a>
   </nav>
   <!-- Banner -->
-  <section id="shopping-section" class="banner-section px-6">
-   <img alt="Banner promocional com arte urbana e texto Fúria das Ruas em estilo grafite" class="w-full max-w-4xl mx-auto rounded-3xl object-cover banner-height" draggable="false" height="200" src="banner.jpg" width="1280" style="height: 200px; max-height: 200px;"/>
+  <section class="banner-section px-6" id="shopping-section">
+   <div aria-label="Banner promocional rotativo com arte urbana e texto Fúria das Ruas em estilo grafite" class="banner-image-container" role="img">
+    <img alt="Banner promocional 1 com arte urbana e texto Fúria das Ruas em estilo grafite, cores vibrantes e grafite estilizado" class="active" draggable="false" height="160" src="https://storage.googleapis.com/a1aa/image/0dd5c61e-288b-4b93-fe41-af95a4c0f5c9.jpg" width="1280"/>
+    <img alt="Banner promocional 2 com arte urbana e texto Fúria das Ruas em estilo grafite, grafite com spray e cores azul e verde" draggable="false" height="160" src="https://storage.googleapis.com/a1aa/image/d1bdeed0-20ce-402a-b29d-6d1f442f1588.jpg" width="1280"/>
+    <img alt="Banner promocional 3 com arte urbana e texto Fúria das Ruas em estilo grafite, grafite com elementos de rua e cores vermelha e preta" draggable="false" height="160" src="https://storage.googleapis.com/a1aa/image/5d5a9eb7-7a3b-4fdc-401f-993ead1e082d.jpg" width="1280"/>
+   </div>
    <!-- Choose your shirt text -->
-   <section class="choose-shirt px-6 text-center mt-6 mb-6">
+   <section class="choose-shirt px-6 text-center mt-6 mb-2">
     <h2 class="font-extrabold text-base select-none">
      Escolha sua Camiseta
     </h2>
    </section>
    <!-- Products -->
-   <section id="products" class="max-w-5xl mx-auto overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 px-4">
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-     <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="adulto.jpg" width="110"/>
-     <h3 class="font-extrabold text-center select-none text-sm">
+   <section class="max-w-5xl mx-auto px-4" id="products">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3">
+     <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="adulto.jpg" width="90"/>
+     <h3 class="font-extrabold select-none text-sm">
       Fúria Adulto
      </h3>
-     <p class="text-center text-xs select-none mt-0.5">
+     <p class="text-xs select-none mt-0.5">
       Escolha o Tamanho
      </p>
-     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Adulto" data-price="60" data-img="adulto.jpg" type="button" data-requires-size="adulto">
+     <button class="add-to-cart" data-img="adulto.jpg" data-name="Fúria Adulto" data-price="60" data-requires-size="adulto" type="button">
       R$60
-      <span class="font-normal">
+      <span>
        Adicionar
       </span>
      </button>
     </article>
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-     <img alt="Camiseta Fúria + Hubz, camiseta branca com estampa combinada de logos" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="hubz.jpg" width="110"/>
-     <h3 class="font-extrabold text-center select-none text-sm">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3">
+     <img alt="Camiseta Fúria + Hubz, camiseta branca com estampa combinada de logos" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="hubz.jpg" width="90"/>
+     <h3 class="font-extrabold select-none text-sm">
       Fúria + Hubz
      </h3>
-     <p class="text-center text-xs select-none mt-0.5">
+     <p class="text-xs select-none mt-0.5">
       T. Único G
      </p>
-     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria + Hubz" data-price="40" data-img="hubz.jpg" type="button">
+     <button class="add-to-cart" data-img="hubz.jpg" data-name="Fúria + Hubz" data-price="40" type="button">
       R$40
-      <span class="font-normal">
+      <span>
        Adicionar
       </span>
      </button>
     </article>
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl w-36 p-3 inline-block align-top">
-     <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-2 object-contain" draggable="false" height="110" src="infantil.png" width="110"/>
-     <h3 class="font-extrabold text-center select-none text-sm">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3">
+     <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="infantil.png" width="90"/>
+     <h3 class="font-extrabold select-none text-sm">
       Fúria Infantil
      </h3>
-     <p class="text-center text-xs select-none mt-0.5">
+     <p class="text-xs select-none mt-0.5">
       Escolha o Tamanho
      </p>
-     <button class="mt-2 bg-gradient-to-r from-teal-600 to-green-400 text-white font-extrabold rounded-full px-3 py-1.5 text-xs select-none add-to-cart" data-name="Fúria Infantil" data-price="50" data-img="infantil.png" type="button" data-requires-size="infantil">
+     <button class="add-to-cart" data-img="infantil.png" data-name="Fúria Infantil" data-price="50" data-requires-size="infantil" type="button">
       R$50
-      <span class="font-normal">
+      <span>
        Adicionar
       </span>
      </button>
     </article>
    </section>
+   <!-- New Special Items Section -->
+   <section class="special-items-section">
+    <h2 class="font-extrabold text-base mb-2 text-center select-none">
+     Itens Especiais
+    </h2>
+    <div class="special-items-container">
+     <article class="special-item-card">
+      <img alt="Corta vento preto jaqueta leve com capuz e zíper frontal" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/a1bb3058-0871-4432-847a-419cd49fbaef.jpg" width="80"/>
+      <div class="special-item-content">
+       <h3 class="special-item-title">
+        Corta Vento
+       </h3>
+       <button class="special-item-button add-to-cart" data-img="https://placehold.co/80x80/png?text=Corta+Vento" data-name="Corta Vento" data-price="120" type="button">
+        R$120
+       </button>
+      </div>
+     </article>
+     <article class="special-item-card">
+      <img alt="Bag de entrega preta com alça ajustável e logo Fúria das Ruas" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/a4ffc8c7-8dae-49b0-737b-9b88ba056559.jpg" width="80"/>
+      <div class="special-item-content">
+       <h3 class="special-item-title">
+        Bag Entrega
+       </h3>
+       <button class="special-item-button add-to-cart" data-img="https://placehold.co/80x80/png?text=Bag+Entrega" data-name="Bag Entrega" data-price="80" type="button">
+        R$80
+       </button>
+      </div>
+     </article>
+     <article class="special-item-card">
+      <img alt="Jaqueta preta com zíper frontal e capuz" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/6b7f8305-5299-42b0-8713-0c2c68fe45d4.jpg" width="80"/>
+      <div class="special-item-content">
+       <h3 class="special-item-title">
+        Jaqueta
+       </h3>
+       <button class="special-item-button add-to-cart" data-img="https://placehold.co/80x80/png?text=Jaqueta" data-name="Jaqueta" data-price="150" type="button">
+        R$150
+       </button>
+      </div>
+     </article>
+    </div>
+   </section>
   </section>
-
   <!-- Orders section -->
-  <section id="orders-section" class="hidden">
-   <h2 class="font-extrabold text-xl text-center mt-6 mb-4 select-none">Pedidos Realizados</h2>
-   <div id="orders-list" aria-live="polite" aria-relevant="additions removals">
-    <p class="text-center text-gray-500 select-none">Nenhum pedido realizado ainda.</p>
+  <section class="hidden" id="orders-section">
+   <h2 class="font-extrabold text-xl text-center mt-6 mb-4 select-none">
+    Pedidos Realizados
+   </h2>
+   <div aria-live="polite" aria-relevant="additions removals" id="orders-list">
+    <p class="text-center text-gray-500 select-none">
+     Nenhum pedido realizado ainda.
+    </p>
    </div>
   </section>
-
   <!-- Size selection modal -->
-  <div id="size-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-60">
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-60" id="size-modal">
    <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
-    <h3 id="size-modal-title" class="text-xl font-extrabold mb-4 text-center"></h3>
-    <div id="size-options" class="grid grid-cols-3 gap-3 mb-6 max-h-64 overflow-y-auto"></div>
+    <h3 class="text-xl font-extrabold mb-4 text-center" id="size-modal-title">
+    </h3>
+    <div class="grid grid-cols-3 gap-3 mb-6 max-h-64 overflow-y-auto" id="size-options">
+    </div>
     <div class="flex justify-end gap-4">
-     <button id="size-cancel" class="bg-gray-300 hover:bg-gray-400 rounded px-4 py-2 font-semibold">
+     <button class="bg-gray-300 hover:bg-gray-400 rounded px-4 py-2 font-semibold" id="size-cancel">
       Cancelar
      </button>
-     <button id="size-confirm" class="bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2 font-extrabold disabled:opacity-50" disabled>
+     <button class="bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2 font-extrabold disabled:opacity-50" disabled="" id="size-confirm">
       Confirmar
      </button>
     </div>
    </div>
   </div>
-
   <!-- Checkout modal -->
-  <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-70">
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-70" id="checkout-modal">
    <div class="modal-content">
-    <h3 class="modal-header">Finalize sua Compra</h3>
-    <form id="checkout-form" class="flex flex-col gap-4">
+    <h3 class="modal-header">
+     Finalize sua Compra
+    </h3>
+    <form class="flex flex-col gap-4" id="checkout-form">
      <label class="flex flex-col text-sm font-semibold">
       Nome do Cliente
-      <input type="text" id="client-name" name="clientName" required class="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input class="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" id="client-name" name="clientName" required="" type="text"/>
      </label>
      <label class="flex flex-col text-sm font-semibold">
       Número de Telefone
-      <input type="tel" id="client-phone" name="clientPhone" required pattern="^\d{8,15}$" placeholder="Somente números, ex: 67999999999" class="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input class="border border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" id="client-phone" name="clientPhone" pattern="^\d{8,15}$" placeholder="Somente números, ex: 67999999999" required="" type="tel"/>
      </label>
      <div class="flex justify-end gap-4">
-      <button type="button" id="checkout-cancel" class="btn btn-secondary">Cancelar</button>
-      <button type="submit" class="btn btn-primary">Enviar para WhatsApp</button>
+      <button class="btn btn-secondary" id="checkout-cancel" type="button">
+       Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit">
+       Enviar para WhatsApp
+      </button>
      </div>
     </form>
    </div>
   </div>
-
   <!-- Footer cart -->
   <footer class="bg-[#0047B3] flex items-center justify-between px-6 py-2 text-white select-none hidden" id="footer-cart">
    <div class="flex items-center gap-2">
-    <i class="fas fa-shopping-bag text-2xl"></i>
-    <span class="font-bold text-base" id="cart-items-count">0 item</span>
+    <i class="fas fa-shopping-bag text-2xl">
+    </i>
+    <span class="font-bold text-base" id="cart-items-count">
+     0 item
+    </span>
    </div>
-   <div class="font-extrabold text-base" id="cart-total-price">R$ 0,00</div>
+   <div class="font-extrabold text-base" id="cart-total-price">
+    R$ 0,00
+   </div>
    <div class="flex gap-2">
     <button class="bg-red-500 hover:bg-red-600 transition-colors rounded-full px-3 py-1 font-extrabold uppercase text-xs" id="clear-cart" type="button">
      Limpar
@@ -446,34 +784,43 @@
     </button>
    </div>
   </footer>
-
   <!-- Sidebar Cart -->
-  <aside id="cart-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50 flex flex-col">
+  <aside class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg translate-x-full transition-transform duration-300 z-50 flex flex-col" id="cart-sidebar">
    <header class="flex items-center justify-between p-2 border-b border-gray-300">
-    <h2 class="text-lg font-extrabold text-gray-900 select-none">Seu Carrinho</h2>
-    <button aria-label="Fechar carrinho" id="close-cart" class="text-gray-700 hover:text-gray-900 focus:outline-none text-xl font-bold">&times;</button>
+    <h2 class="text-lg font-extrabold text-gray-900 select-none">
+     Seu Carrinho
+    </h2>
+    <button aria-label="Fechar carrinho" class="text-gray-700 hover:text-gray-900 focus:outline-none text-xl font-bold" id="close-cart">
+     ×
+    </button>
    </header>
-   <div id="cart-items-container" class="flex-1 overflow-y-auto p-2 space-y-2">
-    <p class="text-center text-gray-500 mt-4 select-none">Seu carrinho está vazio.</p>
+   <div class="flex-1 overflow-y-auto p-2 space-y-2" id="cart-items-container">
+    <p class="text-center text-gray-500 mt-4 select-none">
+     Seu carrinho está vazio.
+    </p>
    </div>
    <footer class="p-2 border-t border-gray-300">
     <div class="flex justify-between font-extrabold text-base mb-2">
-     <span>Total:</span>
-     <span id="sidebar-cart-total">R$ 0,00</span>
+     <span>
+      Total:
+     </span>
+     <span id="sidebar-cart-total">
+      R$ 0,00
+     </span>
     </div>
-    <button id="checkout-button" class="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-1.5 rounded-lg select-none text-sm">
+    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-1.5 rounded-lg select-none text-sm" id="checkout-button">
      Finalizar Compra
     </button>
    </footer>
   </aside>
-
-  <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
-
-  <!-- Add to Cart Splash -->
-  <div id="add-to-cart-splash" role="alert" aria-live="assertive" aria-atomic="true">
-    <i class="fas fa-check-circle"></i> Item adicionado ao carrinho!
+  <div class="fixed inset-0 bg-black bg-opacity-40 hidden z-40" id="cart-overlay">
   </div>
-
+  <!-- Add to Cart Splash -->
+  <div aria-atomic="true" aria-live="assertive" id="add-to-cart-splash" role="alert">
+   <i class="fas fa-check-circle">
+   </i>
+   Item adicionado ao carrinho!
+  </div>
   <script>
    (() => {
     const adultSizes = [
@@ -544,7 +891,7 @@
           emptyMsg.className = 'text-center text-gray-500 mt-4 select-none';
           container.appendChild(emptyMsg);
         } else {
-          this.items.forEach((item) => {
+          this.items.forEach((item, index) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'flex justify-between items-center border-b border-gray-200 pb-1 gap-2';
             itemDiv.innerHTML = `
@@ -683,22 +1030,28 @@
     });
 
     // Add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        const name = button.getAttribute('data-name');
-        const price = parseFloat(button.getAttribute('data-price'));
-        const img = button.getAttribute('data-img') || '';
-        const requiresSize = button.getAttribute('data-requires-size');
-
-        if (requiresSize === 'adulto' || requiresSize === 'infantil') {
-          pendingAdd = { name, price, img, type: requiresSize };
-          openSizeModal(requiresSize, name);
-        } else {
-          cart.addItem(name, price, img);
-          showAddToCartSplash();
-        }
+    function attachAddToCartListeners() {
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.removeEventListener('click', addToCartHandler);
+        button.addEventListener('click', addToCartHandler);
       });
-    });
+    }
+    function addToCartHandler(event) {
+      const button = event.currentTarget;
+      const name = button.getAttribute('data-name');
+      const price = parseFloat(button.getAttribute('data-price'));
+      const img = button.getAttribute('data-img') || '';
+      const requiresSize = button.getAttribute('data-requires-size');
+
+      if (requiresSize === 'adulto' || requiresSize === 'infantil') {
+        pendingAdd = { name, price, img, type: requiresSize };
+        openSizeModal(requiresSize, name);
+      } else {
+        cart.addItem(name, price, img);
+        showAddToCartSplash();
+      }
+    }
+    attachAddToCartListeners();
 
     // Clear cart button
     document.getElementById('clear-cart').addEventListener('click', () => {
@@ -836,11 +1189,65 @@
       }, 500);
     }
 
-    // On load, show shopping section and render orders
-    document.addEventListener('DOMContentLoaded', () => {
-      showSection('shopping');
-      renderOrders();
+    // Scroll behavior for nav bar
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const nav = document.getElementById('main-nav');
+    const header = document.querySelector('header');
+    let navFixedVisible = false;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScrollTop > lastScrollTop) {
+        // Scrolling down: show original mode (header and nav visible)
+        if (navFixedVisible) {
+          nav.classList.remove('fixed-top');
+          navFixedVisible = false;
+          header.style.display = 'flex';
+          nav.style.marginTop = '4px';
+        }
+      } else if (currentScrollTop < lastScrollTop) {
+        // Scrolling up: hide header and show fixed nav at top
+        if (!navFixedVisible && currentScrollTop > 100) {
+          nav.classList.add('fixed-top');
+          navFixedVisible = true;
+          header.style.display = 'none';
+          nav.style.marginTop = '0';
+        }
+        if (currentScrollTop <= 100) {
+          // Near top, show header and normal nav
+          nav.classList.remove('fixed-top');
+          navFixedVisible = false;
+          header.style.display = 'flex';
+          nav.style.marginTop = '4px';
+        }
+      }
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
     });
+
+    // Banner rotation logic
+    const bannerImages = document.querySelectorAll('.banner-image-container img');
+    let currentBannerIndex = 0;
+    const totalBanners = bannerImages.length;
+    function showBanner(index) {
+      bannerImages.forEach((img, i) => {
+        if (i === index) {
+          img.classList.add('active');
+        } else {
+          img.classList.remove('active');
+        }
+      });
+    }
+    function rotateBanners() {
+      if (currentBannerIndex < totalBanners - 1) {
+        currentBannerIndex++;
+        showBanner(currentBannerIndex);
+        if (currentBannerIndex < totalBanners - 1) {
+          setTimeout(rotateBanners, 4000);
+        }
+      }
+    }
+    setTimeout(rotateBanners, 4000);
    })();
   </script>
  </body>
