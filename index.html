@@ -286,7 +286,12 @@
    }
    /* Sidebar cart fixed and above footer */
    #cart-sidebar {
-     z-index: 50;
+     z-index: 10000;
+     background-color: #ffffff !important;
+   }
+   /* When cart is open, overlay covers entire page */
+   #cart-overlay {
+     z-index: 9999;
    }
    /* Modal styles */
    #size-modal, #checkout-modal {
@@ -828,16 +833,16 @@
    </div>
   </footer>
   <!-- Sidebar Cart -->
-  <aside class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg translate-x-full transition-transform duration-300 z-50 flex flex-col" id="cart-sidebar">
-   <header class="flex items-center justify-between p-2 border-b border-gray-300">
+  <aside class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg translate-x-full transition-transform duration-300 z-50 flex flex-col" id="cart-sidebar" aria-label="Carrinho de compras">
+   <header class="flex items-center justify-between p-2 border-b border-gray-300 bg-white">
     <h2 class="text-lg font-extrabold text-gray-900 select-none">
      Seu Carrinho
     </h2>
-    <button aria-label="Fechar carrinho" class="text-gray-700 hover:text-gray-900 focus:outline-none text-xl font-bold" id="close-cart">
+    <button aria-label="Fechar carrinho" class="text-gray-700 hover:text-gray-900 focus:outline-none text-xl font-bold" id="close-cart" type="button">
      ×
     </button>
    </header>
-   <div class="flex-1 overflow-y-auto p-2 space-y-2" id="cart-items-container">
+   <div class="flex-1 overflow-y-auto p-2 space-y-2" id="cart-items-container" tabindex="0">
     <p class="text-center text-gray-500 mt-4 select-none">
      Seu carrinho está vazio.
     </p>
@@ -851,12 +856,12 @@
       R$ 0,00
      </span>
     </div>
-    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-1.5 rounded-lg select-none text-sm" id="checkout-button">
+    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-1.5 rounded-lg select-none text-sm" id="checkout-button" type="button">
      Finalizar Compra
     </button>
    </footer>
   </aside>
-  <div class="fixed inset-0 bg-black bg-opacity-40 hidden z-40" id="cart-overlay">
+  <div class="fixed inset-0 bg-black bg-opacity-40 hidden z-40" id="cart-overlay" tabindex="-1" aria-hidden="true">
   </div>
   <!-- Add to Cart Splash -->
   <div aria-atomic="true" aria-live="assertive" id="add-to-cart-splash" role="alert">
@@ -1105,6 +1110,8 @@
       const cartTotalPriceEl = document.getElementById('cart-total-price');
       cartItemsCountEl.textContent = '0 item';
       cartTotalPriceEl.textContent = 'R$ 0,00';
+      // Hide footer cart if empty
+      document.getElementById('footer-cart').classList.add('hidden');
     });
 
     // View cart button opens sidebar
@@ -1182,12 +1189,14 @@
     function openCartSidebar() {
       document.getElementById('cart-sidebar').classList.remove('translate-x-full');
       document.getElementById('cart-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
       document.getElementById('footer-cart').style.zIndex = '30';
       document.getElementById('footer-cart').style.pointerEvents = 'none';
     }
     function closeCartSidebar() {
       document.getElementById('cart-sidebar').classList.add('translate-x-full');
       document.getElementById('cart-overlay').classList.add('hidden');
+      document.body.style.overflow = ''; // Restore scroll
       document.getElementById('footer-cart').style.zIndex = '40';
       document.getElementById('footer-cart').style.pointerEvents = 'auto';
     }
