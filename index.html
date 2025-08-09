@@ -612,6 +612,27 @@
        border-radius: 0 !important;
      }
    }
+   /* Size modal extended styles */
+   #size-modal .modal-content {
+     max-width: 450px;
+   }
+   #size-modal label {
+     display: block;
+     margin-bottom: 0.5rem;
+     font-weight: 600;
+     font-size: 0.9rem;
+     color: #1e293b;
+     user-select: none;
+   }
+   #size-modal input[type="text"] {
+     width: 100%;
+     border: 1px solid #9ca3af;
+     border-radius: 0.375rem;
+     padding: 0.5rem 0.75rem;
+     font-size: 1rem;
+     margin-bottom: 1rem;
+     outline-offset: 2px;
+   }
   </style>
  </head>
  <body class="bg-white text-black min-h-screen flex flex-col justify-start relative overflow-x-hidden pb-16">
@@ -669,15 +690,15 @@
    </section>
    <!-- Products -->
    <section class="max-w-5xl mx-auto px-4" id="products">
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3">
-     <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="adulto.jpg" width="90"/>
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-adulto-article">
+     <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="adulto.jpg" width="90" id="furia-adulto-img"/>
      <h3 class="font-extrabold select-none text-sm">
       Fúria Adulto
      </h3>
      <p class="text-xs select-none mt-0.5">
       Escolha o Tamanho
      </p>
-     <button class="add-to-cart" data-img="adulto.jpg" data-name="Fúria Adulto" data-price="60" data-requires-size="adulto" type="button">
+     <button class="add-to-cart" data-img="adulto.jpg" data-name="Fúria Adulto" data-price="60" data-requires-size="adulto" data-requires-name="true" type="button" id="furia-adulto-button">
       R$60
       <span>
        Adicionar
@@ -699,15 +720,15 @@
       </span>
      </button>
     </article>
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3">
-     <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="infantil.png" width="90"/>
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-infantil-article">
+     <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" src="infantil.png" width="90" id="furia-infantil-img"/>
      <h3 class="font-extrabold select-none text-sm">
       Fúria Infantil
      </h3>
      <p class="text-xs select-none mt-0.5">
       Escolha o Tamanho
      </p>
-     <button class="add-to-cart" data-img="infantil.png" data-name="Fúria Infantil" data-price="50" data-requires-size="infantil" type="button">
+     <button class="add-to-cart" data-img="infantil.png" data-name="Fúria Infantil" data-price="50" data-requires-size="infantil" data-requires-name="true" type="button" id="furia-infantil-button">
       R$50
       <span>
        Adicionar
@@ -768,21 +789,25 @@
     </p>
    </div>
   </section>
-  <!-- Size selection modal -->
-  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-60" id="size-modal">
+  <!-- Size and Name selection modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-60" id="size-modal" role="dialog" aria-modal="true" aria-labelledby="size-modal-title">
    <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
     <h3 class="text-xl font-extrabold mb-4 text-center" id="size-modal-title">
     </h3>
-    <div class="grid grid-cols-3 gap-3 mb-6 max-h-64 overflow-y-auto" id="size-options">
-    </div>
-    <div class="flex justify-end gap-4">
-     <button class="bg-gray-300 hover:bg-gray-400 rounded px-4 py-2 font-semibold" id="size-cancel">
-      Cancelar
-     </button>
-     <button class="bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2 font-extrabold disabled:opacity-50" disabled="" id="size-confirm">
-      Confirmar
-     </button>
-    </div>
+    <form id="size-name-form" class="flex flex-col">
+     <div class="grid grid-cols-3 gap-3 mb-4 max-h-64 overflow-y-auto" id="size-options" role="list" aria-label="Opções de tamanho">
+     </div>
+     <label for="custom-name" class="block mb-1 font-semibold text-gray-900 select-none">Nome ou Apelido para estampar (opcional)</label>
+     <input id="custom-name" name="customName" type="text" maxlength="20" placeholder="Digite o nome ou apelido" class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" autocomplete="off" />
+     <div class="flex justify-end gap-4">
+      <button class="bg-gray-300 hover:bg-gray-400 rounded px-4 py-2 font-semibold" id="size-cancel" type="button">
+       Cancelar
+      </button>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2 font-extrabold disabled:opacity-50" disabled id="size-confirm" type="submit">
+       Confirmar
+      </button>
+     </div>
+    </form>
    </div>
   </div>
   <!-- Checkout modal -->
@@ -895,8 +920,8 @@
 
     const cart = {
       items: [],
-      addItem(name, price, img, size) {
-        this.items.push({ name, price, img, size });
+      addItem(name, price, img, size, customName) {
+        this.items.push({ name, price, img, size, customName });
         this.updateUI();
       },
       clear() {
@@ -942,9 +967,10 @@
           this.items.forEach((item, index) => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'flex justify-between items-center border-b border-gray-200 pb-1 gap-2';
+            const customNameText = item.customName ? ` - Nome: ${item.customName}` : '';
             itemDiv.innerHTML = `
               <img src="${item.img}" alt="Imagem do produto ${item.name}" class="w-12 h-12 object-contain rounded-lg flex-shrink-0" />
-              <div class="flex-1 font-semibold text-gray-900 select-none text-sm">${item.name}${item.size ? ' - Tamanho: ' + item.size : ''}</div>
+              <div class="flex-1 font-semibold text-gray-900 select-none text-sm">${item.name}${item.size ? ' - Tamanho: ' + item.size : ''}${customNameText}</div>
               <div class="text-gray-700 select-none text-sm">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
             `;
             container.appendChild(itemDiv);
@@ -960,6 +986,8 @@
     const sizeOptionsContainer = document.getElementById('size-options');
     const sizeCancelBtn = document.getElementById('size-cancel');
     const sizeConfirmBtn = document.getElementById('size-confirm');
+    const sizeNameForm = document.getElementById('size-name-form');
+    const customNameInput = document.getElementById('custom-name');
 
     const checkoutModal = document.getElementById('checkout-modal');
     const checkoutForm = document.getElementById('checkout-form');
@@ -974,7 +1002,7 @@
     const ordersList = document.getElementById('orders-list');
 
     let selectedSize = null;
-    let pendingAdd = null; // {name, price, img, type}
+    let pendingAdd = null; // {name, price, img, type, requiresName}
 
     // Utility: Save orders to cookie (JSON string)
     function saveOrdersToCookie(orders) {
@@ -1016,7 +1044,8 @@
         const date = new Date(order.date);
         const dateStr = date.toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
         const productsHtml = order.items.map((item, i) => {
-          return `${i+1}. ${item.name}${item.size ? ' - Tamanho: ' + item.size : ''} - R$ ${item.price.toFixed(2).replace('.', ',')}`;
+          const customNameText = item.customName ? ` - Nome: ${item.customName}` : '';
+          return `${i+1}. ${item.name}${item.size ? ' - Tamanho: ' + item.size : ''}${customNameText} - R$ ${item.price.toFixed(2).replace('.', ',')}`;
         }).join('<br>');
         div.innerHTML = `
           <div class="order-header">Pedido de ${order.clientName}</div>
@@ -1028,11 +1057,13 @@
       });
     }
 
-    function openSizeModal(type, name) {
+    function openSizeModal(type, name, requiresName) {
       selectedSize = null;
       sizeConfirmBtn.disabled = true;
       sizeOptionsContainer.innerHTML = '';
+      customNameInput.value = '';
       sizeModalTitle.textContent = `Escolha o tamanho para ${name}`;
+      customNameInput.parentElement.style.display = requiresName ? 'block' : 'none';
 
       let sizes = [];
       if (type === 'adulto') {
@@ -1052,6 +1083,7 @@
         btn.type = 'button';
         btn.className = 'size-option';
         btn.textContent = `${size.label} (${size.description})`;
+        btn.setAttribute('role', 'listitem');
         btn.addEventListener('click', () => {
           selectedSize = size.label;
           Array.from(sizeOptionsContainer.children).forEach(c => c.classList.remove('selected'));
@@ -1062,19 +1094,28 @@
       });
 
       sizeModal.classList.remove('hidden');
+      customNameInput.focus();
     }
 
     sizeCancelBtn.addEventListener('click', () => {
       sizeModal.classList.add('hidden');
       pendingAdd = null;
+      selectedSize = null;
+      sizeConfirmBtn.disabled = true;
+      customNameInput.value = '';
     });
 
-    sizeConfirmBtn.addEventListener('click', () => {
+    sizeNameForm.addEventListener('submit', (e) => {
+      e.preventDefault();
       if (!selectedSize || !pendingAdd) return;
-      cart.addItem(pendingAdd.name, pendingAdd.price, pendingAdd.img, selectedSize);
+      const customName = customNameInput.value.trim() || null;
+      cart.addItem(pendingAdd.name, pendingAdd.price, pendingAdd.img, selectedSize, customName);
       showAddToCartSplash();
       sizeModal.classList.add('hidden');
       pendingAdd = null;
+      selectedSize = null;
+      sizeConfirmBtn.disabled = true;
+      customNameInput.value = '';
     });
 
     // Add to cart buttons
@@ -1090,10 +1131,11 @@
       const price = parseFloat(button.getAttribute('data-price'));
       const img = button.getAttribute('data-img') || '';
       const requiresSize = button.getAttribute('data-requires-size');
+      const requiresName = button.getAttribute('data-requires-name') === 'true';
 
       if (requiresSize === 'adulto' || requiresSize === 'infantil') {
-        pendingAdd = { name, price, img, type: requiresSize };
-        openSizeModal(requiresSize, name);
+        pendingAdd = { name, price, img, type: requiresSize, requiresName };
+        openSizeModal(requiresSize, name, requiresName);
       } else {
         cart.addItem(name, price, img);
         showAddToCartSplash();
@@ -1160,7 +1202,8 @@
       // Prepare WhatsApp message with client info and order
       let message = `*Pedido Fúria das Ruas*%0A%0A*Cliente:* ${encodeURIComponent(name)}%0A*Telefone:* ${encodeURIComponent(phone)}%0A%0A`;
       cart.items.forEach((item, index) => {
-        message += `*${index + 1}. ${item.name}*${item.size ? ' - Tamanho: ' + item.size : ''}%0APreço: R$ ${item.price.toFixed(2).replace('.', ',')}%0A%0A`;
+        const customNameText = item.customName ? ` - Nome: ${item.customName}` : '';
+        message += `*${index + 1}. ${item.name}*${item.size ? ' - Tamanho: ' + item.size : ''}${customNameText}%0APreço: R$ ${item.price.toFixed(2).replace('.', ',')}%0A%0A`;
       });
       message += `*Total:* R$ ${cart.getTotal().toFixed(2).replace('.', ',')}`;
       const phoneNumber = '5567999321890';
@@ -1171,7 +1214,7 @@
       const newOrder = {
         clientName: name,
         clientPhone: phone,
-        items: cart.items.map(i => ({ name: i.name, price: i.price, size: i.size || null })),
+        items: cart.items.map(i => ({ name: i.name, price: i.price, size: i.size || null, customName: i.customName || null })),
         total: cart.getTotal(),
         date: new Date().toISOString()
       };
@@ -1204,6 +1247,7 @@
     // Navigation between Pedidos and Shopping sections
     function showSection(section) {
       if (section === 'pedidos') {
+        renderOrders();
         ordersSection.classList.remove('hidden');
         shoppingSection.classList.add('hidden');
         navPedidos.classList.add('bg-gray-900');
@@ -1221,7 +1265,6 @@
     }
 
     navPedidos.addEventListener('click', () => {
-      renderOrders();
       showSection('pedidos');
     });
     navShopping.addEventListener('click', () => {
@@ -1300,6 +1343,28 @@
       }
     }
     setTimeout(rotateBanners, 4000);
+
+    // Swap images between Fúria Adulto and Fúria Infantil after 3 seconds
+    const furiaAdultoImg = document.getElementById('furia-adulto-img');
+    const furiaInfantilImg = document.getElementById('furia-infantil-img');
+    const furiaAdultoButton = document.getElementById('furia-adulto-button');
+    const furiaInfantilButton = document.getElementById('furia-infantil-button');
+
+    setTimeout(() => {
+      // Store original src and data-img
+      const adultoSrc = furiaAdultoImg.src;
+      const adultoDataImg = furiaAdultoButton.getAttribute('data-img');
+      const infantilSrc = furiaInfantilImg.src;
+      const infantilDataImg = furiaInfantilButton.getAttribute('data-img');
+
+      // Swap images src
+      furiaAdultoImg.src = infantilSrc;
+      furiaInfantilImg.src = adultoSrc;
+
+      // Swap data-img attributes on buttons
+      furiaAdultoButton.setAttribute('data-img', infantilDataImg);
+      furiaInfantilButton.setAttribute('data-img', adultoDataImg);
+    }, 3000);
    })();
   </script>
  </body>
