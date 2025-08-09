@@ -286,12 +286,12 @@
    }
    /* Sidebar cart fixed and above footer */
    #cart-sidebar {
-     z-index: 10000;
+     z-index: 50;
      background-color: #ffffff !important;
    }
    /* When cart is open, overlay covers entire page */
    #cart-overlay {
-     z-index: 9999;
+     z-index: 49;
    }
    /* Modal styles */
    #size-modal, #checkout-modal {
@@ -858,7 +858,7 @@
    </div>
   </footer>
   <!-- Sidebar Cart -->
-  <aside class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg translate-x-full transition-transform duration-300 z-50 flex flex-col" id="cart-sidebar" aria-label="Carrinho de compras">
+  <aside class="fixed top-0 right-0 h-full w-72 bg-white shadow-lg translate-x-full transition-transform duration-300 flex flex-col" id="cart-sidebar" aria-label="Carrinho de compras">
    <header class="flex items-center justify-between p-2 border-b border-gray-300 bg-white">
     <h2 class="text-lg font-extrabold text-gray-900 select-none">
      Seu Carrinho
@@ -886,7 +886,7 @@
     </button>
    </footer>
   </aside>
-  <div class="fixed inset-0 bg-black bg-opacity-40 hidden z-40" id="cart-overlay" tabindex="-1" aria-hidden="true">
+  <div class="fixed inset-0 bg-black bg-opacity-40 hidden" id="cart-overlay" tabindex="-1" aria-hidden="true">
   </div>
   <!-- Add to Cart Splash -->
   <div aria-atomic="true" aria-live="assertive" id="add-to-cart-splash" role="alert">
