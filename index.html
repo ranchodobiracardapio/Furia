@@ -1396,11 +1396,16 @@
     });
 
     function openCartSidebar() {
-      cartSidebar.classList.add('open');
-      document.getElementById('cart-overlay').classList.remove('hidden');
-      document.body.style.overflow = 'hidden'; // Prevent background scroll
-      // When cart is open, header z-index lower so cart overlays it
-      header.style.zIndex = '999';
+      // Scroll page to bottom before opening cart
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      // Delay opening cart sidebar slightly to allow scroll animation
+      setTimeout(() => {
+        cartSidebar.classList.add('open');
+        document.getElementById('cart-overlay').classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+        // When cart is open, header z-index lower so cart overlays it
+        header.style.zIndex = '999';
+      }, 300);
     }
     function closeCartSidebar() {
       cartSidebar.classList.remove('open');
@@ -1550,4 +1555,4 @@
    })();
   </script>
  </body>
-</html>
+     </html>
