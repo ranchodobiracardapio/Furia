@@ -222,6 +222,7 @@
      align-items: center;
      text-align: center;
      margin: 0;
+     cursor: pointer;
    }
    article img {
      height: 90px;
@@ -230,6 +231,8 @@
      object-fit: contain;
      transform: none !important;
      border-radius: 0.5rem;
+     pointer-events: none;
+     user-select: none;
    }
    article h3 {
      font-size: 0.875rem;
@@ -308,7 +311,7 @@
      z-index: 1000;
    }
    /* Modal styles */
-   #size-modal, #checkout-modal {
+   #size-modal, #checkout-modal, #detail-modal {
      position: fixed;
      inset: 0;
      background: rgba(0,0,0,0.5);
@@ -317,7 +320,7 @@
      justify-content: center;
      z-index: 9999;
    }
-   #size-modal.hidden, #checkout-modal.hidden {
+   #size-modal.hidden, #checkout-modal.hidden, #detail-modal.hidden {
      display: none;
    }
    .modal-content {
@@ -327,6 +330,8 @@
      max-width: 400px;
      width: 90%;
      z-index: 10000;
+     max-height: 90vh;
+     overflow-y: auto;
    }
    .modal-header {
      font-weight: 700;
@@ -707,6 +712,83 @@
    #view-cart:hover {
      background-color: #16a34a !important;
    }
+   /* Detail modal styles */
+   #detail-modal .modal-content {
+     max-width: 500px;
+     width: 95%;
+     max-height: 90vh;
+     overflow-y: auto;
+     padding: 1rem 1.5rem;
+   }
+   #detail-modal img {
+     width: 100%;
+     max-height: 300px;
+     object-fit: contain;
+     border-radius: 1rem;
+     margin-bottom: 1rem;
+     user-select: none;
+   }
+   #detail-modal .details-title {
+     font-weight: 800;
+     font-size: 1.5rem;
+     margin-bottom: 0.5rem;
+     color: #1e293b;
+     user-select: none;
+     text-align: center;
+   }
+   #detail-modal .details-description {
+     font-size: 1rem;
+     color: #475569;
+     margin-bottom: 1rem;
+     user-select: none;
+     text-align: center;
+   }
+   #detail-modal .detail-buttons {
+     display: flex;
+     justify-content: center;
+     gap: 1rem;
+     flex-wrap: wrap;
+   }
+   #detail-modal .detail-buttons button {
+     flex: 1 1 45%;
+     padding: 0.75rem 1rem;
+     font-weight: 700;
+     border-radius: 0.5rem;
+     cursor: pointer;
+     user-select: none;
+     border: none;
+     transition: background-color 0.2s ease;
+     font-size: 1rem;
+   }
+   #detail-modal .btn-add-cart {
+     background-color: #14b8a6;
+     color: white;
+   }
+   #detail-modal .btn-add-cart:hover {
+     background-color: #0d9488;
+   }
+   #detail-modal .btn-buy-now {
+     background-color: #22c55e;
+     color: white;
+   }
+   #detail-modal .btn-buy-now:hover {
+     background-color: #16a34a;
+   }
+   #detail-modal .close-detail {
+     position: absolute;
+     top: 0.5rem;
+     right: 0.75rem;
+     font-size: 1.5rem;
+     font-weight: 700;
+     color: #475569;
+     cursor: pointer;
+     user-select: none;
+     background: transparent;
+     border: none;
+   }
+   #detail-modal .close-detail:hover {
+     color: #1e293b;
+   }
   </style>
  </head>
  <body class="bg-white text-black min-h-screen flex flex-col justify-start relative overflow-x-hidden pb-16">
@@ -764,7 +846,7 @@
    </section>
    <!-- Products -->
    <section class="max-w-5xl mx-auto px-4" id="products">
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-adulto-article">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-adulto-article" tabindex="0" role="button" aria-label="Detalhes da camiseta Fúria Adulto">
      <img alt="Camiseta Fúria Adulto, camiseta preta com estampa urbana estilizada" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" id="furia-adulto-img" src="adulto.jpg" width="90"/>
      <h3 class="font-extrabold select-none text-sm">
       Fúria Adulto
@@ -779,7 +861,7 @@
       </span>
      </button>
     </article>
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-hubz-article">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-hubz-article" tabindex="0" role="button" aria-label="Detalhes da camiseta Fúria + Hubz">
      <div aria-label="Imagens rotativas da camiseta Fúria + Hubz" class="product-image-rotator">
       <img alt="Camiseta Fúria + Hubz, imagem 1, camiseta branca com estampa combinada de logos fh.png" class="active" draggable="false" height="90" src="fh.png" width="90"/>
       <img alt="Camiseta Fúria + Hubz, imagem 2, camiseta branca com estampa combinada de logos fh2.png" draggable="false" height="90" src="fh2.png" width="90"/>
@@ -797,7 +879,7 @@
       </span>
      </button>
     </article>
-    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-infantil-article">
+    <article class="bg-gradient-to-b from-gray-300 to-white rounded-3xl p-3" id="furia-infantil-article" tabindex="0" role="button" aria-label="Detalhes da camiseta Fúria Infantil">
      <img alt="Camiseta Fúria Infantil, camiseta colorida com estampa infantil divertida" class="rounded-2xl mb-1 object-contain" draggable="false" height="90" id="furia-infantil-img" src="infantil.jpg" width="90"/>
      <h3 class="font-extrabold select-none text-sm">
       Fúria Infantil
@@ -819,7 +901,7 @@
      Itens Especiais
     </h2>
     <div class="special-items-container">
-     <article class="special-item-card">
+     <article class="special-item-card" tabindex="0" role="button" aria-label="Detalhes do Corta V FúriaGG">
       <img alt="Corta vento preto jaqueta leve com capuz e zíper frontal" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/a1bb3058-0871-4432-847a-419cd49fbaef.jpg" width="80"/>
       <div class="special-item-content">
        <h3 class="special-item-title">
@@ -830,7 +912,7 @@
        </button>
       </div>
      </article>
-     <article class="special-item-card">
+     <article class="special-item-card" tabindex="0" role="button" aria-label="Detalhes do Adesivo Bag">
       <img alt="Bag de entrega preta com alça ajustável e logo Fúria das Ruas" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/a4ffc8c7-8dae-49b0-737b-9b88ba056559.jpg" width="80"/>
       <div class="special-item-content">
        <h3 class="special-item-title">
@@ -841,7 +923,7 @@
        </button>
       </div>
      </article>
-     <article class="special-item-card">
+     <article class="special-item-card" tabindex="0" role="button" aria-label="Detalhes do Moletom HubzGG">
       <img alt="Jaqueta preta com zíper frontal e capuz" class="special-item-image" draggable="false" height="80" src="moletom.png" width="80"/>
       <div class="special-item-content">
        <h3 class="special-item-title">
@@ -852,7 +934,7 @@
        </button>
       </div>
      </article>
-     <article class="special-item-card">
+     <article class="special-item-card" tabindex="0" role="button" aria-label="Detalhes do Moletom Fúria GG">
       <img alt="Moletom Fúria GG cinza com capuz e estampa frontal" class="special-item-image" draggable="false" height="80" src="https://storage.googleapis.com/a1aa/image/55afe1e1-1663-47e9-493b-829118e2fad3.jpg" width="80"/>
       <div class="special-item-content">
        <h3 class="special-item-title">
@@ -924,6 +1006,19 @@
       </button>
      </div>
     </form>
+   </div>
+  </div>
+  <!-- Detail modal -->
+  <div aria-labelledby="detail-modal-title" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-9999" id="detail-modal" role="dialog">
+   <div class="modal-content relative">
+    <button aria-label="Fechar detalhes" class="close-detail" id="detail-close-button" type="button">×</button>
+    <img alt="" id="detail-image" src="" draggable="false" />
+    <h3 class="details-title" id="detail-modal-title"></h3>
+    <p class="details-description" id="detail-description"></p>
+    <div class="detail-buttons">
+     <button class="btn-add-cart" id="detail-add-cart" type="button">Adicionar ao Carrinho</button>
+     <button class="btn-buy-now" id="detail-buy-now" type="button">Comprar Agora</button>
+    </div>
    </div>
   </div>
   <!-- Footer cart -->
@@ -1153,8 +1248,17 @@
     const header = document.getElementById('page-header');
     const cartSidebar = document.getElementById('cart-sidebar');
 
+    const detailModal = document.getElementById('detail-modal');
+    const detailImage = document.getElementById('detail-image');
+    const detailTitle = document.getElementById('detail-modal-title');
+    const detailDescription = document.getElementById('detail-description');
+    const detailAddCartBtn = document.getElementById('detail-add-cart');
+    const detailBuyNowBtn = document.getElementById('detail-buy-now');
+    const detailCloseBtn = document.getElementById('detail-close-button');
+
     let selectedSize = null;
     let pendingAdd = null; // {name, price, img, type, requiresName}
+    let detailCurrentItem = null; // {name, price, img, type, requiresName}
 
     // Utility: Save orders to cookie (JSON string)
     function saveOrdersToCookie(orders) {
@@ -1278,6 +1382,7 @@
       });
     }
     function addToCartHandler(event) {
+      event.stopPropagation();
       const button = event.currentTarget;
       const name = button.getAttribute('data-name');
       let price = parseFloat(button.getAttribute('data-price'));
@@ -1555,6 +1660,121 @@
       }
       setInterval(rotateHubzImages, 5000);
     }
+
+    // Open detail modal with item info
+    function openDetailModal(item) {
+      detailCurrentItem = item;
+      detailImage.src = item.img;
+      detailImage.alt = `Imagem detalhada da camiseta ${item.name}`;
+      detailTitle.textContent = item.name;
+      let desc = '';
+      if (item.type === 'adulto') {
+        desc = 'Camiseta adulto com tamanhos variados. Escolha seu tamanho ao adicionar ao carrinho.';
+      } else if (item.type === 'infantil') {
+        desc = 'Camiseta infantil com tamanhos variados. Escolha seu tamanho ao adicionar ao carrinho.';
+      } else {
+        desc = 'Produto especial disponível para compra.';
+      }
+      detailDescription.textContent = desc;
+      detailModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close detail modal
+    function closeDetailModal() {
+      detailModal.classList.add('hidden');
+      detailCurrentItem = null;
+      document.body.style.overflow = '';
+    }
+
+    detailCloseBtn.addEventListener('click', closeDetailModal);
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) {
+        closeDetailModal();
+      }
+    });
+
+    // Add to cart from detail modal
+    detailAddCartBtn.addEventListener('click', () => {
+      if (!detailCurrentItem) return;
+      const { name, price, img, type, requiresName } = detailCurrentItem;
+      if (type === 'adulto' || type === 'infantil') {
+        pendingAdd = { name, price, img, type, requiresName };
+        openSizeModal(type, name, requiresName);
+      } else {
+        cart.addItem(name, price, img);
+        showAddToCartSplash();
+      }
+      closeDetailModal();
+    });
+
+    // Buy now from detail modal
+    detailBuyNowBtn.addEventListener('click', () => {
+      if (!detailCurrentItem) return;
+      const { name, price, img, type, requiresName } = detailCurrentItem;
+      if (type === 'adulto' || type === 'infantil') {
+        pendingAdd = { name, price, img, type, requiresName };
+        openSizeModal(type, name, requiresName);
+      } else {
+        cart.clear();
+        cart.addItem(name, price, img);
+        showAddToCartSplash();
+        openCartSidebar();
+      }
+      closeDetailModal();
+    });
+
+    // Attach click listeners to product articles and special items for detail modal
+    function attachDetailModalListeners() {
+      // Products
+      document.querySelectorAll('#products article').forEach(article => {
+        article.addEventListener('click', () => {
+          const button = article.querySelector('button.add-to-cart');
+          if (!button) return;
+          const name = button.getAttribute('data-name');
+          let price = parseFloat(button.getAttribute('data-price'));
+          const img = button.getAttribute('data-img') || '';
+          const requiresSize = button.getAttribute('data-requires-size');
+          const requiresName = button.getAttribute('data-requires-name') === 'true';
+
+          // Apply discount 9.23% if no orders exist and item is "Fúria Adulto"
+          if (name === "Fúria Adulto" && !hasOrders()) {
+            price = +(price * (1 - 0.0923)).toFixed(2);
+          }
+          // Apply discount 8.15% if no orders exist and item is "Fúria + Hubz"
+          if (name === "Fúria + Hubz" && !hasOrders()) {
+            price = +(price * (1 - 0.0815)).toFixed(2);
+          }
+
+          openDetailModal({ name, price, img, type: requiresSize || null, requiresName });
+        });
+        article.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            article.click();
+          }
+        });
+      });
+      // Special items
+      document.querySelectorAll('.special-item-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const button = card.querySelector('button.add-to-cart');
+          if (!button) return;
+          const name = button.getAttribute('data-name');
+          let price = parseFloat(button.getAttribute('data-price'));
+          const img = button.getAttribute('data-img') || '';
+          // Special items do not require size or name
+          openDetailModal({ name, price, img, type: null, requiresName: false });
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+    }
+    attachDetailModalListeners();
    })();
   </script>
  </body>
